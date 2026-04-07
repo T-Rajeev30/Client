@@ -48,9 +48,9 @@
 <section id="hero" class="active">
     <canvas id="heroCanvas"></canvas>
     <div class="container hero-content">
-        <p class="hero-eyebrow"><i class="fas fa-bolt"></i> AI-Powered Collector Platform</p>
+        <p class="hero-eyebrow"><i class="fas fa-database"></i> Searchable Database Platform</p>
         <h1 class="hero-title heading-font">The Future of <span class="foil-text">Trading Card</span> Intelligence</h1>
-        <p class="hero-subtitle">Discover events, locate premier shops, and access AI-driven market insights built for the modern collector.</p>
+        <p class="hero-subtitle">Aggregates trading card show data, tracks sponsor participation, helps collectors find shops, and auto-generates content.</p>
         <div class="hero-search">
             <input type="text" id="heroSearchInput" placeholder="Search events near 'Chicago'..." aria-label="Search events" onkeypress="if(event.key==='Enter')searchEvents()">
             <button class="btn btn-primary" onclick="searchEvents()"><i class="fas fa-search" style="margin-right:8px"></i>Explore</button>
@@ -65,11 +65,11 @@
 
 <section id="features">
     <div class="container">
-        <div class="section-header reveal"><h2 class="section-title heading-font">Why Choose CardVault?</h2><p class="section-subtitle">We centralize the disjointed trading card market into one intelligent, actionable dashboard.</p></div>
+        <div class="section-header reveal"><h2 class="section-title heading-font">The Central Hub</h2><p class="section-subtitle">Eliminating fragmentation by centralizing event, sponsor, and shop data into one intelligent platform.</p></div>
         <div class="feature-grid">
-            <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><div><h3 class="heading-font" style="margin-bottom:8px">AI Market Valuation</h3><p style="font-size:.95rem;color:var(--text-muted)">Our engine scrapes millions of auction results daily to provide real-time fair market value (FMV) predictions for vintage and modern wax.</p></div></div>
-            <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-route"></i></div><div><h3 class="heading-font" style="margin-bottom:8px">Live Event Tracking</h3><p style="font-size:.95rem;color:var(--text-muted)">Never miss a regional trade night. We map active vendor events, tournaments, and major conventions globally.</p></div></div>
-            <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-shield-halved"></i></div><div><h3 class="heading-font" style="margin-bottom:8px">Verified Sponsors</h3><p style="font-size:.95rem;color:var(--text-muted)">Partner exclusively with industry-vetted grading agencies, vault services, and accessory manufacturers.</p></div></div>
+            <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-server"></i></div><div><h3 class="heading-font" style="margin-bottom:8px">Centralized Data Engine</h3><p style="font-size:.95rem;color:var(--text-muted)">Aggregates event data from selected sources into a live, searchable database combining internal data with live web results.</p></div></div>
+            <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-chart-pie"></i></div><div><h3 class="heading-font" style="margin-bottom:8px">Sponsor Intelligence Tool</h3><p style="font-size:.95rem;color:var(--text-muted)">Designed for show organizers and corporate sponsors to analyze competitive presence, filter by category, and compare backed events.</p></div></div>
+            <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-pen-nib"></i></div><div><h3 class="heading-font" style="margin-bottom:8px">AI Content Engine</h3><p style="font-size:.95rem;color:var(--text-muted)">Automatically generates blog posts, LinkedIn insights, and social video scripts triggered by real-time database entries.</p></div></div>
         </div>
     </div>
 </section>
@@ -96,7 +96,7 @@
 
 <section id="sponsors">
     <div class="container">
-        <div class="section-header reveal"><h2 class="section-title heading-font">Sponsor Intelligence</h2><p class="section-subtitle">Data-driven insights into industry partnerships and event backing.</p></div>
+        <div class="section-header reveal"><h2 class="section-title heading-font">Sponsor Intelligence Tool</h2><p class="section-subtitle">B2B analytics allowing show organizers and corporate sponsors to analyze competitive presence and category overlap.</p></div>
         <div class="data-table-wrapper">
             <table id="sponsorTable">
                 <thead><tr><th onclick="sortTable(0)">Sponsor Name <i class="fas fa-sort"></i></th><th onclick="sortTable(1)">Tier <i class="fas fa-sort"></i></th><th onclick="sortTable(2)">Events Sponsored <i class="fas fa-sort"></i></th><th onclick="sortTable(3)">Primary Category <i class="fas fa-sort"></i></th></tr></thead>
@@ -126,7 +126,7 @@
 
 <section id="admin">
     <div class="container">
-        <div class="section-header reveal"><h2 class="section-title heading-font">Admin Dashboard</h2><p class="section-subtitle">Content Review Queue & Management</p></div>
+        <div class="section-header reveal"><h2 class="section-title heading-font">Admin Dashboard</h2><p class="section-subtitle">Automated AI Content Engine & Pending Drafts Review</p></div>
         <div class="admin-stats" id="adminStats">
             <div class="admin-stat-card"><span class="stat-val foil-text" id="statDraftCount">2</span><span class="stat-label">Pending Drafts</span></div>
             <div class="admin-stat-card"><span class="stat-val" style="color:var(--success)">1</span><span class="stat-label">Published</span></div>
@@ -180,7 +180,7 @@
         <button class="chat-close" onclick="toggleChat()" aria-label="Close chat"><i class="fas fa-xmark"></i></button>
     </div>
     <div class="chat-body" id="chatBody">
-        <div class="chat-msg msg-ai">Hello! I can help you find upcoming card shows, check PSA submission times, or analyze market trends. How can I assist?</div>
+        <div class="chat-msg msg-ai">Hello! I am powered by Gemini and Vertex AI Search grounding. I can search our internal database of events and sponsors, or augment answers with live web results. How can I assist?</div>
     </div>
     <div class="chat-input">
         <input type="text" id="chatInput" placeholder="Ask about events..." onkeypress="handleChatKey(event)">
@@ -211,7 +211,7 @@ function publishPost(id){let post=posts.find(p=>p.id===id);if(post){post.status=
 function deletePost(id){posts=posts.filter(p=>p.id!==id);renderContent()}
 function toggleChat(){document.getElementById('chat-widget').classList.toggle('open')}
 function handleChatKey(e){if(e.key==='Enter')sendChatMessage()}
-function sendChatMessage(){const input=document.getElementById('chatInput');const val=input.value.trim();if(!val)return;const body=document.getElementById('chatBody');body.innerHTML+=`<div class="chat-msg msg-user">${val}</div>`;input.value='';body.scrollTop=body.scrollHeight;setTimeout(()=>{body.innerHTML+=`<div style="display:flex;flex-direction:column;align-items:flex-start;"><div class="chat-msg msg-ai">I found 3 major card shows matching your query in the next month. The biggest one is the Windy City Card Show in Chicago.</div><div class="chat-grounding"><i class="fab fa-google"></i> Grounded by Google Search</div></div>`;body.scrollTop=body.scrollHeight},1000)}
+function sendChatMessage(){const input=document.getElementById('chatInput');const val=input.value.trim();if(!val)return;const body=document.getElementById('chatBody');body.innerHTML+=`<div class="chat-msg msg-user">${val}</div>`;input.value='';body.scrollTop=body.scrollHeight;setTimeout(()=>{body.innerHTML+=`<div style="display:flex;flex-direction:column;align-items:flex-start;"><div class="chat-msg msg-ai">Based on our internal database and Vertex AI live grounding, I found 3 major card shows matching your query. The largest is the Windy City Card Show in Chicago, sponsored primarily by PSA and Topps.</div><div class="chat-grounding" style="color:var(--success)"><i class="fas fa-check-circle"></i> Grounded by Internal DB & Vertex AI Search</div></div>`;body.scrollTop=body.scrollHeight},1000)}
 let map;
 function initMap(){if(map)return;map=L.map('shopMap').setView([39.8283,-98.5795],4);L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);shops.forEach(s=>{L.circleMarker([s.lat,s.lng],{color:'#2563eb',fillColor:'#3b82f6',fillOpacity:.6,radius:8,weight:2}).addTo(map).bindPopup(`<strong style="color:#1a1d26">${s.name}</strong><br><span style="color:#8590a5">${s.cat} &bull; ⭐ ${s.rating}</span>`)})}
 function initParticles(){const canvas=document.getElementById('heroCanvas');if(!canvas)return;const ctx=canvas.getContext('2d');let w,h,particles=[];function resize(){w=canvas.width=canvas.offsetWidth;h=canvas.height=canvas.offsetHeight}resize();window.addEventListener('resize',resize);const colors=['#dbeafe','#93c5fd','#60a5fa','#3b82f6','#2563eb'];for(let i=0;i<60;i++){particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.5,dx:(Math.random()-.5)*.4,dy:(Math.random()-.5)*.4,color:colors[Math.floor(Math.random()*colors.length)]})}function draw(){ctx.clearRect(0,0,w,h);ctx.lineWidth=.5;for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){let dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<100){ctx.beginPath();ctx.strokeStyle=particles[i].color;ctx.globalAlpha=1-(dist/100);ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke()}}}particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color;ctx.globalAlpha=.8;ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>w)p.dx*=-1;if(p.y<0||p.y>h)p.dy*=-1});ctx.globalAlpha=1;requestAnimationFrame(draw)}draw()}
